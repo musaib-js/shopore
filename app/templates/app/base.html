@@ -12,7 +12,7 @@
     <!--Owl Carousel CSS-->
     <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
 
-    <link rel="shortcut icon" href="/static/app/images/sidenavlogo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/app/images/sidenavlogonew.svg" type="image/x-icon">
 
 
     <!--FontAwesome CSS-->
@@ -63,6 +63,11 @@
           right: 25px;
           font-size: 36px;
           margin-left: 50px;
+        }
+
+        .cartbadge:{
+            background-color: #1B1464;
+            color: #FFD593;
         }
         
         #main {
@@ -133,7 +138,7 @@
       <div id="main">
         
         <span style="font-size:30px;cursor:pointer;font-color: #FFD593;" onclick="openNav()">&#9776; <a href = "/"><img src = "/static/app/images/navlogosvg.svg"></a></span>
-        <span style="font-size:30px;cursor:pointer;float: right;"> <a href = "{% url 'showcart' %}"><i style = "color: 1B1464;" class="fas fa-shopping-cart"></i></a><span style="font-size:10px" class="badge bg-dark">{{totalitem}}</span> </span>
+        <span style="font-size:30px;cursor:pointer;float: right;"> <a href = "{% url 'showcart' %}"><i style = "color: 1B1464;" class="fas fa-shopping-cart"></i></a><span style="font-size:10px" class="cartbadge">{{totalitem}}</span> </span>
         <span style="font-size:30px;cursor:pointer;float: right;"> <i style = "color: #1B1464;" class="far fa-user"></i> &nbsp;&nbsp;&nbsp;</span>
       
     <script>
