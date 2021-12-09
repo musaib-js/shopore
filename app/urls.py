@@ -73,6 +73,11 @@ urlpatterns = [
     path('bottomwear/', views.bottomwear, name =  "bottomwear"),
     path('bottomwear/<slug:data>', views.bottomwear, name = "bottomweardata"),
 
+    # URL FOR KNITTED WEAR
+    path('knittedwear/', views.knittedwear, name =  "knittedwear"),
+    path('knittedwear/<slug:data>', views.knittedwear, name = "knittedweardata"),
+
+
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm), name='login'),
     # path('profile/', views.profile, name='profile'),
     path('profile/', views.ProfileView.as_view(), name='profile'),

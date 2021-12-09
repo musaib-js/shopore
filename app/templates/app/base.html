@@ -33,7 +33,7 @@
           z-index: 1;
           top: 0;
           left: 0;
-          background-color: #FFFAF0;
+          background-color: #FFD593;
           overflow-x: hidden;
           transition: 0.5s;
           padding-top: 60px;
@@ -78,7 +78,7 @@
         }
 
         .ad-banner{
-              background-color: #f69a29
+              background-color: #1B1464
         }
         </style>
 
@@ -89,7 +89,7 @@
 <body>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <img src = "/static/app/images/sidenavlogo.svg" width = "auto" height = "300">
+        <img src = "/static/app/images/sidenavlogonew.svg">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a class="textdark active" aria-current="page" href="/">Home</a>
@@ -124,6 +124,7 @@
                 <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
                     <li><a class="dropdown-item" href="{% url 'topwear' %}">Top Wear</a></li>
                     <li><a class="dropdown-item" href="{% url 'bottomwear' %}">Bottom Wear</a></li>
+                    <li><a class="dropdown-item" href="{% url 'knittedwear' %}">Knitted Wear</a></li>
                 </ul>
             </li>
         </ul>
@@ -131,9 +132,9 @@
       
       <div id="main">
         
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; <a href = "/"><img src = "/static/app/images/navlogoshopore.svg"></a></span>
-        <span style="font-size:30px;cursor:pointer;float: right;"> <a href = "{% url 'showcart' %}"><i style = "color: black;" class="fas fa-shopping-cart"></i></a><span style="font-size:10px" class="badge bg-dark">{{totalitem}}</span> </span>
-        <span style="font-size:30px;cursor:pointer;float: right;"> <i class="far fa-user"></i> &nbsp;&nbsp;&nbsp;</span>
+        <span style="font-size:30px;cursor:pointer;font-color: #FFD593;" onclick="openNav()">&#9776; <a href = "/"><img src = "/static/app/images/navlogosvg.svg"></a></span>
+        <span style="font-size:30px;cursor:pointer;float: right;"> <a href = "{% url 'showcart' %}"><i style = "color: 1B1464;" class="fas fa-shopping-cart"></i></a><span style="font-size:10px" class="badge bg-dark">{{totalitem}}</span> </span>
+        <span style="font-size:30px;cursor:pointer;float: right;"> <i style = "color: #1B1464;" class="far fa-user"></i> &nbsp;&nbsp;&nbsp;</span>
       
     <script>
         function openNav() {

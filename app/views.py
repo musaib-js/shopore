@@ -324,6 +324,17 @@ def bottomwear(request, data=None):
 			bottomwear = Product.objects.filter(category='BW').filter(brand=data)
 	return render(request, 'app/bottomwear.html', {'bottomwear':bottomwear, 'totalitem':totalitem})
 
+# View for knitted wear
+def knittedwear(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			knittedwear = Product.objects.filter(category='KC')
+	elif data == 'sweaters' or data == 'kidsets' or data == 'gloves' or data == "caps":
+			knittedwear = Product.objects.filter(category='KC').filter(brand=data)
+	return render(request, 'app/knittedwear.html', {'knittedwear':knittedwear, 'totalitem':totalitem})
+
 class CustomerRegistrationView(View):
  def get(self, request):
   form = CustomerRegistrationForm()
