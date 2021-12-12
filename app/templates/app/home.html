@@ -2,6 +2,15 @@
 {% load static %}
 {% block title %}Home{% endblock title %}
 
+{% block searchbar %}
+        <div class = "container" style = "margin-top: 9px; margin-bottom: 9px;">
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="What are you looking for?" aria-label="Search">
+                <button class="btn btn-search" type="submit">Find</button>
+            </form>
+        </div>
+{% endblock searchbar %}
+
 {% block banner_slider %}
 <!--Banner Slider-->
  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -72,7 +81,7 @@
 
 <!-- 2nd Product Slider -->
 <div class="m-3">
- <h2>Groceries by SHopore</h2>
+ <h2 style = "background-color: #FFD593; color: #1B1464; text-align: center">Groceries by Shopore</h2>
  <!-- Slider 1 -->
  <div class="owl-carousel" id="slider1">
   {% for b in groceries %}
@@ -84,7 +93,7 @@
 
 <!-- 1st Product Slider -->
 <div class="m-3">
- <h2>Bottom Wear</h2>
+ <h2 style = "background-color: #FFD593; color: #1B1464; text-align: center">Bottom Wear</h2>
  <!-- Slider 1 -->
  <div class="owl-carousel" id="slider1">
   {% for b in bottomwears %}
@@ -131,7 +140,7 @@
 
 <!-- 2nd Product Slider -->
 <div class="mx-3">
- <h2>Top Wear</h2>
+ <h2 style = "background-color: #FFD593; color: #1B1464; text-align: center">Top Wear</h2>
  <!-- Slider 2 -->
  <div class="owl-carousel" id="slider2">
   {% for tp in topwears %}
@@ -143,7 +152,7 @@
 
 <!-- 3rd Product Slider -->
 <div class="mx-3">
- <h2>Mobile</h2>
+ <h2 style = "background-color: #FFD593; color: #1B1464; text-align: center">Mobiles</h2>
  <!-- Slider 3 -->
  <div class="owl-carousel" id="slider3">
   {% for m in mobiles %}

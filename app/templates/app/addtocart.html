@@ -6,7 +6,7 @@
  {% comment %} Below Code will be used by add_to_cart view {% endcomment %}
  {% if messages %}
  {% for message in messages %}
-  <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+  <p {% if message.tags %} class="alert message-alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
  {% endfor %}
  {% endif %}
  <div class="row">
@@ -30,7 +30,7 @@
         <a class="plus-cart btn" pid="{{cart.product.id}}"><i class="fas fa-plus-square fa-lg"></i></a>
        </div> 
        <div class="d-flex justify-content-between">
-        <a class="btn btn-sm btn-secondary mr-3 remove-cart" pid={{cart.product.id}}>Remove item </a>       
+        <a class="btn btn-sm btn-remove mr-3 remove-cart" pid={{cart.product.id}}>Remove item </a>       
         <p class="mb-0"><span><strong>Rs. {{cart.product.discounted_price}}</strong></span></p>
        </div>
       </div>
@@ -58,7 +58,7 @@
          <span><strong>Rs. </strong><strong id="totalamount"> {{totalamount|floatformat:2}}</strong></span>
        </li>
       </ul>
-      <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-danger fw-bold">Place Order</a></div>
+      <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-place-order fw-bold">Place Order</a></div>
     </div>
    </div>
   </div>

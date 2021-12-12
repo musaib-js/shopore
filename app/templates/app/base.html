@@ -80,13 +80,63 @@
         @media screen and (max-height: 450px) {
           .sidenav {padding-top: 15px;}
           .sidenav a {font-size: 18px;}
-
+          
+          
 
 
         }
 
         .ad-banner{
               background-color: #1B1464
+        }
+
+        .btn-addtocart{
+            background-color: #1B1464
+        }
+
+        .btn-buynow{
+            background-color: #1B1464;
+            color: #FFD593;
+        }
+
+        .social-links{
+            color: #1B1464;
+        }
+
+        .section-links{
+            color: #1B1464;
+        }
+
+        .shopore-footer{
+            background-color: #FFD593;
+        }
+
+        .message-alert{
+            background-color: #FFD593;
+            color: #1B1464;
+        }
+
+        .btn-remove{
+            background-color: #1B1464; 
+            color: #FFD593;
+        }
+
+        .plus-cart{
+            color: #1B1464; 
+        }
+
+        .minus-cart{
+            color: #FFD593;
+        }
+
+        .btn-place-order{
+            background-color: #FFD593;
+            color: #1B1464; 
+        }
+
+        .btn-search{
+            background-color: #1B1464;
+            color: #FFD593;
         }
         </style>
 
@@ -141,9 +191,12 @@
       <div id="main">
         
         <span style="font-size:30px;cursor:pointer;font-color: #FFD593;" onclick="openNav()">&#9776; <a href = "/"><img src = "/static/app/images/navlogosvg.svg"></a></span>
-        <span style="font-size:30px;cursor:pointer;float: right;"> <a href = "{% url 'showcart' %}"><i style = "color: 1B1464;" class="fas fa-shopping-cart"></i></a><span style="font-size:10px" class="cartbadge">{{totalitem}}</span> </span>
-        <span style="font-size:30px;cursor:pointer;float: right;"> <i style = "color: #1B1464;" class="far fa-user"></i> &nbsp;&nbsp;&nbsp;</span>
+        <span style="font-size:28px;cursor:pointer;float: right;"> <a href = "{% url 'showcart' %}"><i style = "color: 1B1464;" class="fas fa-shopping-cart"></i></a><span style="font-size:10px" class="cartbadge">{{totalitem}}</span> </span>
+        <span style="font-size:28px;cursor:pointer;float: right;"> <i style = "color: #1B1464;" class="far fa-user"></i> &nbsp;&nbsp;&nbsp;</span>
      
+        {% block searchbar %}
+        {% endblock searchbar %}
+
     <script>
         function openNav() {
           document.getElementById("mySidenav").style.width = "300px";
@@ -250,7 +303,7 @@
     </footer>
     <!-- End Footer -->{% endcomment %}
     <!-- Footer -->
-    <footer class="text-center text-lg-start bg-light text-muted">
+    <footer class="text-center text-lg-start shopore-footer text-muted">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
@@ -260,7 +313,7 @@
             <!-- Left -->
 
             <!-- Right -->
-            <div>
+            <div class  = "social-links">
                 <a href="" class="me-4 text-reset">
                     <i class="fab fa-facebook-f"></i>
                 </a>
@@ -285,7 +338,7 @@
         <!-- Section: Social media -->
 
         <!-- Section: Links  -->
-        <section class="">
+        <section class="section-links">
             <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->
                 <div class="row mt-3">
@@ -335,10 +388,10 @@
                             <a href="#!" class="text-reset">My Cart</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Blog</a>
+                            <a href="#!" class="text-reset">Privacy Policy</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Help</a>
+                            <a href="#!" class="text-reset">Terms and Conditions</a>
                         </p>
                     </div>
                     <!-- Grid column -->
