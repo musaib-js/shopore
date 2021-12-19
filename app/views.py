@@ -150,6 +150,7 @@ def payment_done(request):
 		print("Order Saved")
 		cid.delete()
 		print("Cart Item Deleted")
+		messages.success(request, "Thank You! Your order has been placed successfully and is awaiting confirmation")
 	return redirect("orders")
 
 def remove_cart(request):
@@ -186,7 +187,7 @@ def address(request):
 
 @login_required
 def orders(request):
-	op = OrderPlaced.objects.filter(user=request.user)
+	op = OrderPlaced.objects.filter(user=request.user).order_by('-ordered_date')
 	return render(request, 'app/orders.html', {'order_placed':op})
 
 # ELECTRONIC ITEMS START FROM HERE
