@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import Customer, Product, Cart, OrderPlaced
 from .forms import CustomerRegistrationForm, CustomerProfileForm
 from django.views import View
-from django.http import JsonResponse
+from django.http import JsonResponse, request
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -373,3 +373,20 @@ class ProfileView(View):
 			reg.save()
 			messages.success(request, 'Congratulations!! Profile Updated Successfully.')
 		return render(request, 'app/profile.html', {'form':form, 'active':'btn-primary', 'totalitem':totalitem})
+
+@login_required
+def cancelorder(request, id):
+	custid = request.GET.get('custid')
+	print(custid)
+	user = request.user
+	ordertobecancelled = OrderPlaced.objects.filter(user  = user, product = id)
+	context = {'ordertobecancelled': ordertobecancelled}
+	return render(request, 'app/cancelorder.html', context)
+
+@login_required
+def cancellationdone(request, id):
+	user = request.user
+	ordertobecancelled = OrderPlaced.objects.filter(user  = user, id = id)
+	ordertobecancelled.delete()
+	messages.success(request, "Your Order Has Been Cancelled")
+	return render(request, "app/orders.html")

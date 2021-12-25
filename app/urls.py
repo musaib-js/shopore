@@ -18,6 +18,8 @@ urlpatterns = [
     path('address/', views.address, name='address'),
     path('orders/', views.orders, name='orders'),
     path('paymentdone/', views.payment_done, name='paymentdone'),
+    path('cancelorder/<int:id>', views.cancelorder, name = "cancelorder"),
+    path('cancellationdone/<int:id>', views.cancellationdone, name = "cancellationdone"),
 
     # URLS FOR PRODUCT PAGES
  
