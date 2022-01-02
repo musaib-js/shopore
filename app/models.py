@@ -61,8 +61,7 @@ CATEGORY_CHOICES = (
  ('TW', 'Top Wear'),
  ('BW', 'Bottom Wear'),
  ('BP', 'Beauty Products'),
- ('MW', 'Mens Footwear'),
- ('LW', 'Ladies Footwear'),
+ ('FW', 'Footwear'),
  ('KW', 'Kids Wear'),
  ('KC', 'Knitted Clothes'),
  ('FR', 'Frozen and Chilled'),
@@ -72,6 +71,7 @@ CATEGORY_CHOICES = (
  ('GR', 'Groceries'), 
  ('BK', 'Bakeries'),
  ('RF', 'Restaurant Food'),
+ ('KS', 'Kashmiri Spices')
 )
 class Product(models.Model):
  title = models.CharField(max_length=100)

@@ -61,8 +61,14 @@ urlpatterns = [
     path('bakeries/<slug:data>', views.bakeries, name  = "bakeriesdata"),
 
     # URL for Restaurant Food
-    path('restaurantfood', views.restaurantfood, name = "restaurantfood"),
+    path('restaurantfood/', views.restaurantfood, name = "restaurantfood"),
     path('restaurantfood/<slug:data>', views.restaurantfood, name = "restaurantfooddata"),
+
+   
+    # URL for Kashmiri Special
+    path('kashmirispices/', views.kashmirispices, name  = "kashmirispices"),
+    path('kashmirispices/<slug:data>', views.kashmirispices, name = "kashmirispicesdata"),
+
 
 
     # Fashion Items From Here
@@ -79,6 +85,10 @@ urlpatterns = [
     path('knittedwear/', views.knittedwear, name =  "knittedwear"),
     path('knittedwear/<slug:data>', views.knittedwear, name = "knittedweardata"),
 
+    # URL for footwear
+    path('footwear/', views.footwear, name =  "footwear"),
+    path('footwear/<slug:data>', views.footwear, name = "footweardata"),
+
 
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm), name='login'),
     # path('profile/', views.profile, name='profile'),
@@ -92,5 +102,7 @@ urlpatterns = [
     path("password-reset-confirm/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name='app/password_reset_confirm.html', form_class=MySetPasswordForm), name="password_reset_confirm"),
     path("password-reset-complete/", auth_views.PasswordResetCompleteView.as_view(template_name='app/password_reset_complete.html'), name="password_reset_complete"),
 
-    path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration')
+    path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
+    path('about/', views.about, name = "about"),
+    path('privacypolicy/', views.privacypolicy, name = "privacypolicy")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

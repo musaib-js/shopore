@@ -1,3 +1,7 @@
+<!-- This code is copyrighted and Shopore.Inc holds all the rights of the code. 
+          Any sort of infringment shall be liable to strict action by the honorable court of justice
+                Developed by Musaib Altaf   -->     
+        
 <!doctype html> {% load static %}
 <html lang="en">
 
@@ -23,7 +27,7 @@
     <style>
         body {
           font-family: "Lato", sans-serif;
-          transition: background-color .5s;
+          transition: background-color .1s;
         }
         
         .sidenav {
@@ -35,7 +39,7 @@
           left: 0;
           background-color: #FFD593;
           overflow-x: hidden;
-          transition: 0.5s;
+          transition: 0.1s;
           padding-top: 60px;
         }
         
@@ -143,6 +147,8 @@
             background-color: #1B1464;
             color: #FFD593;
         }
+
+      
         </style>
 
 
@@ -168,6 +174,17 @@
                     <li><a class="dropdown-item" href="{% url 'restaurantfood' %}">Restaurant Food</a></li>
                 </ul>
             </li>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle text-dark" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+       Kashmiri Special
+     </a>
+                <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+                    <li><a class="dropdown-item" href="{% url 'kashmirispices' %}">Kashmiri Spices</a></li>
+                </ul>
+            </li>
+
+
             <li class="dropdown">
                 <a class="dropdown-toggle text-dark" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
        Electronics
@@ -188,6 +205,7 @@
                     <li><a class="dropdown-item" href="{% url 'topwear' %}">Top Wear</a></li>
                     <li><a class="dropdown-item" href="{% url 'bottomwear' %}">Bottom Wear</a></li>
                     <li><a class="dropdown-item" href="{% url 'knittedwear' %}">Knitted Wear</a></li>
+                    <li><a class="dropdown-item" href="{% url 'footwear' %}">Foot Wear</a></li>
                 </ul>
             </li>
         </ul>
@@ -195,7 +213,7 @@
       
       <div id="main">
         
-        <span style="font-size:30px;cursor:pointer;font-color: #FFD593;" onclick="openNav()">&#9776; <a href = "/"><img src = "/static/app/images/navlogosvg.svg"></a></span>
+        <span style="font-size:30px;cursor:pointer;font-color: #FFD593;" onclick="openNav()">&#9776;<img src = "/static/app/images/navlogosvg.svg"></span>
         <span style="font-size:28px;cursor:pointer;float: right;"> <a href = "{% url 'showcart' %}"><i style = "color: 1B1464;" class="fas fa-shopping-cart"></i></a><span style="font-size:10px" class="cartbadge">{{totalitem}}</span> </span>
         <span class = "dropdown" style="font-size:28px;cursor:pointer;float: right;"><i style = "color: #1B1464;" class="far fa-user dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></i>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -416,16 +434,16 @@
                             Useful links
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset">My Orders</a>
+                            <a href="/orders" class="text-reset">My Orders</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">My Cart</a>
+                            <a href="/cart" class="text-reset">My Cart</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Privacy Policy</a>
+                            <a href="/about" class="text-reset">About Us</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Terms and Conditions</a>
+                            <a href="/privacypolicy" class="text-reset">Privacy Policy</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -453,7 +471,7 @@
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2021 Copyright:
-            <a class="text-reset fw-bold" href="/">Shopore, Inc</a>
+            <a class="text-reset fw-bold" href="/">Shopore. Inc</a>
 
         </div>
         <!-- Copyright -->

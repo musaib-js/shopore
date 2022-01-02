@@ -336,6 +336,28 @@ def knittedwear(request, data=None):
 			knittedwear = Product.objects.filter(category='KC').filter(brand=data)
 	return render(request, 'app/knittedwear.html', {'knittedwear':knittedwear, 'totalitem':totalitem})
 
+# View for knitted wear
+def footwear(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			footwear = Product.objects.filter(category='FW')
+	elif data == 'formalmens' or data == 'formalwomens' or data == 'casualmens' or data == "casualwomens" or data == "kidsfootwear" or data == "wintershoes":
+			footwear = Product.objects.filter(category='FW').filter(brand=data)
+	return render(request, 'app/footwear.html', {'footwear':footwear, 'totalitem':totalitem})
+
+# View for kashmiri spices wear
+def kashmirispices(request, data=None):
+	totalitem = 0
+	if request.user.is_authenticated:
+		totalitem = len(Cart.objects.filter(user=request.user))
+	if data==None :
+			kashmirispices = Product.objects.filter(category='KS')
+	elif data == 'redchillipowder' or data == 'fenugreekleaves' or data == 'fenugreekseeds':
+			kashmirispices = Product.objects.filter(category='KS').filter(brand=data)
+	return render(request, 'app/kashmirispices.html', {'kashmirispices':kashmirispices, 'totalitem':totalitem})
+
 class CustomerRegistrationView(View):
  def get(self, request):
   form = CustomerRegistrationForm()
@@ -390,3 +412,9 @@ def cancellationdone(request, id):
 	ordertobecancelled.delete()
 	messages.success(request, "Your Order Has Been Cancelled")
 	return render(request, "app/orders.html")
+
+def about(request):
+	return render(request, 'app/about.html')
+
+def privacypolicy(request):
+	return render(request, 'app/privacypolicy.html')
