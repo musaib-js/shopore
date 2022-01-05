@@ -85,6 +85,13 @@ class Product(models.Model):
  def __str__(self):
   return str(self.id)
 
+class Coupon(models.Model):
+ title = models.CharField(max_length=100)
+ worth = models.IntegerField()
+
+ def __str__(self):
+  return self.title
+
 
 class Cart(models.Model):
  user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -5,12 +5,17 @@ from .models import (
  Customer,
  Product,
  Cart,
- OrderPlaced
+ OrderPlaced, 
+ Coupon
 )
 
 @admin.register(Customer)
 class CustomerModelAdmin(admin.ModelAdmin):
  list_display = ['id', 'user', 'name', 'locality', 'city', 'zipcode', 'state']
+
+@admin.register(Coupon)
+class CouponModelAdmin(admin.ModelAdmin):
+ list_display = ['title', 'worth']
 
 @admin.register(Product)
 class ProductModelAdmin(admin.ModelAdmin):

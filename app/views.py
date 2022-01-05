@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
-from .models import Customer, Product, Cart, OrderPlaced
+from .models import Customer, Product, Cart, OrderPlaced, Coupon
 from .forms import CustomerRegistrationForm, CustomerProfileForm
 from django.views import View
 from django.http import JsonResponse, request
@@ -49,7 +49,19 @@ def add_to_cart(request):
 @login_required
 def show_cart(request):
 	totalitem = 0
+	coupondiscount = 0
 	if request.user.is_authenticated:
+		if request.method == "POST":
+			inputcoupon = request.POST['coupon']
+			matchcoupon = Coupon.objects.all()
+			print(matchcoupon)
+			print(inputcoupon)
+
+			if inputcoupon ==  matchcoupon:
+				coupondiscountt = matchcoupon.worth
+				print(coupondiscountt)
+			else: 
+				coupondiscount = 0
 		totalitem = len(Cart.objects.filter(user=request.user))
 		user = request.user
 		cart = Cart.objects.filter(user=user)
@@ -62,7 +74,7 @@ def show_cart(request):
 			for p in cart_product:
 				tempamount = (p.quantity * p.product.discounted_price)
 				amount += tempamount
-			totalamount = amount+shipping_amount
+			totalamount = amount+shipping_amount-coupondiscount
 			return render(request, 'app/addtocart.html', {'carts':cart, 'amount':amount, 'totalamount':totalamount, 'totalitem':totalitem})
 		else:
 			return render(request, 'app/emptycart.html', {'totalitem':totalitem})
