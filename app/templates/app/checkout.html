@@ -12,8 +12,13 @@
                 </div>
             </div>
             {% endfor %}
+            <div class="card mb-2">
+                <div class="card-body">
+            <div> <p class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">Have a coupon?</p><span><form method = "POST" id = "coupon-form"> <input class = "form-control" name = "coupon" id = "coupon" required> <small class = "my-2" style = "color:red;"> {% for x in messages %}{{x}}{% endfor %}</small> <br> <span><input class="btn btn-sm btn-remove my-2" type="submit" value="Apply">{% csrf_token %}</form></span></div>
             <p class="fw-bold">Total Cost + Rs. 70 = {{totalcost}}</p>
             <small>(Rs. 70 Delivery Charge)</small>
+        </div>
+    </div>
             <hr>
             <small>Terms and Conditions: Order once placed can be cancelled only if the cancellation request is submitted within 15 minutes of the order placement. Order for restaurant food can not be cancelled.</small>
         </div>

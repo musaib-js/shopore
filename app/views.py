@@ -49,19 +49,8 @@ def add_to_cart(request):
 @login_required
 def show_cart(request):
 	totalitem = 0
-	coupondiscount = 0
+	coupondiscountt = 0
 	if request.user.is_authenticated:
-		if request.method == "POST":
-			inputcoupon = request.POST['coupon']
-			matchcoupon = Coupon.objects.all()
-			print(matchcoupon)
-			print(inputcoupon)
-
-			if inputcoupon ==  matchcoupon:
-				coupondiscountt = matchcoupon.worth
-				print(coupondiscountt)
-			else: 
-				coupondiscount = 0
 		totalitem = len(Cart.objects.filter(user=request.user))
 		user = request.user
 		cart = Cart.objects.filter(user=user)
@@ -74,8 +63,9 @@ def show_cart(request):
 			for p in cart_product:
 				tempamount = (p.quantity * p.product.discounted_price)
 				amount += tempamount
-			totalamount = amount+shipping_amount-coupondiscount
-			return render(request, 'app/addtocart.html', {'carts':cart, 'amount':amount, 'totalamount':totalamount, 'totalitem':totalitem})
+			totalamount = (amount+shipping_amount)-coupondiscountt
+			print(totalamount)
+			return render(request, 'app/addtocart.html', {'carts':cart, 'amount':amount, 'totalamount':totalamount, 'totalitem':totalitem,})
 		else:
 			return render(request, 'app/emptycart.html', {'totalitem':totalitem})
 	else:
@@ -135,6 +125,21 @@ def minus_cart(request):
 
 @login_required
 def checkout(request):
+	coupondiscountt = 0
+	if request.method == "POST":
+			inputcoupon = request.POST['coupon']
+			matchcoupon = Coupon.objects.filter(title = inputcoupon)[0]
+			print(matchcoupon)
+			print(inputcoupon)
+
+			if inputcoupon ==  matchcoupon.title:
+				coupondiscountt = matchcoupon.worth
+				print(coupondiscountt)
+				messages.success(request, "Coupon Applied Successfully")
+			else: 
+				coupondiscountt = 0
+				print(coupondiscountt)
+				messages.error(request, "Coupon invalid or expired")
 	user = request.user
 	add = Customer.objects.filter(user=user)
 	cart_items = Cart.objects.filter(user=request.user)
@@ -146,7 +151,7 @@ def checkout(request):
 		for p in cart_product:
 			tempamount = (p.quantity * p.product.discounted_price)
 			amount += tempamount
-		totalamount = amount+shipping_amount
+		totalamount = amount+shipping_amount-coupondiscountt
 	return render(request, 'app/checkout.html', {'add':add, 'cart_items':cart_items, 'totalcost':totalamount})
 
 @login_required
