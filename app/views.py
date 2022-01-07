@@ -126,20 +126,21 @@ def minus_cart(request):
 @login_required
 def checkout(request):
 	coupondiscountt = 0
+	inputcoupon =  "None"
 	if request.method == "POST":
 			inputcoupon = request.POST['coupon']
-			matchcoupon = Coupon.objects.filter(title = inputcoupon)[0]
-			print(matchcoupon)
-			print(inputcoupon)
-
-			if inputcoupon ==  matchcoupon.title:
-				coupondiscountt = matchcoupon.worth
-				print(coupondiscountt)
-				messages.success(request, "Coupon Applied Successfully")
-			else: 
+			matchcoupon = Coupon.objects.filter(title = inputcoupon).first()
+			if matchcoupon:
+				if inputcoupon == matchcoupon.title:
+					coupondiscountt = matchcoupon.worth
+					print(coupondiscountt)
+					messages.success(request, "Coupon Applied Successfully")
+				else:
+					coupondiscountt = 0
+					messages.error(request, "Invalid or Expired Coupon Code ")
+			else:
 				coupondiscountt = 0
-				print(coupondiscountt)
-				messages.error(request, "Coupon invalid or expired")
+				messages.error(request, "Invalid Coupon. Please check it again")	
 	user = request.user
 	add = Customer.objects.filter(user=user)
 	cart_items = Cart.objects.filter(user=request.user)
@@ -152,10 +153,12 @@ def checkout(request):
 			tempamount = (p.quantity * p.product.discounted_price)
 			amount += tempamount
 		totalamount = amount+shipping_amount-coupondiscountt
-	return render(request, 'app/checkout.html', {'add':add, 'cart_items':cart_items, 'totalcost':totalamount})
+	return render(request, 'app/checkout.html', {'add':add, 'cart_items':cart_items, 'totalcost':totalamount, 'couponapplied': inputcoupon})
 
 @login_required
 def payment_done(request):
+	inpcoupon = request.GET.get('couponapplied')
+	print("Coupon Applied", inpcoupon)
 	custid = request.GET.get('custid')
 	print("Customer ID", custid)
 	user = request.user
@@ -163,7 +166,7 @@ def payment_done(request):
 	customer = Customer.objects.get(id=custid)
 	print(customer)
 	for cid in cartid:
-		OrderPlaced(user=user, customer=customer, product=cid.product, quantity=cid.quantity).save()
+		OrderPlaced(user=user, customer=customer, product=cid.product, quantity=cid.quantity, couponapplied=inpcoupon).save()
 		print("Order Saved")
 		cid.delete()
 		print("Cart Item Deleted")

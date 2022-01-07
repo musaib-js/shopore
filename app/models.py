@@ -121,6 +121,7 @@ class OrderPlaced(models.Model):
  product = models.ForeignKey(Product, on_delete=models.CASCADE)
  quantity = models.PositiveIntegerField(default=1)
  ordered_date = models.DateTimeField(auto_now_add=True)
+ couponapplied = models.CharField(max_length = 150, default = "None")
  status = models.CharField(max_length=50,choices=STATUS_CHOICES,default='Pending')
 
   # Below Property will be used by orders.html page to show total cost
