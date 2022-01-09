@@ -14,10 +14,10 @@
       {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br>
       </div>
      {% endfor %}
-     <small><a href="{% url 'password_reset' %}">Forgot Password ?</a></small> <br>
-     <input type="submit" class="btn btn-primary mt-4" value="Login">
+     <small class = "text-shopore-a"><a href="{% url 'password_reset' %}">Forgot Password ?</a></small> <br>
+     <input type="submit" class="btn btn-search mt-4" value="Login">
      <br>
-     <div class="text-center text-primary fw-bold"><small>New to Shopore ? <a href="{% url 'customerregistration' %}" class="text-danger">Create an Account</a> </small></div>
+     <div class="text-center text-shopore-a fw-bold"><small>New to Shopore ? <a href="{% url 'customerregistration' %}" class="text-dark">Create an Account</a> </small></div>
 		 
      {% if form.non_field_errors %}
       {% for error in form.non_field_errors %}

@@ -143,7 +143,7 @@
 
 @media (max-width: 1080px) {
     .image {
-        flex: 100%;
+        flex: 50%;
         max-width: 500px;
     }
 }
